@@ -1,5 +1,6 @@
 const UserSchema = (sequelize, DataTypes) => {
   const UserTable = sequelize.define("User", {
+    id: DataTypes.INTEGER,
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
@@ -8,7 +9,7 @@ const UserSchema = (sequelize, DataTypes) => {
   }, { timestamps: false });
 
   UserTable.associate = (models) => {
-    UserTable.hasMany(models.Blogpost, {
+    UserTable.hasMany(models.BlogPost, {
       as: 'blogpost',
       foreingKey: 'userId'
     })
