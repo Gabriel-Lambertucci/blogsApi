@@ -13,4 +13,17 @@ const loginMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { loginMiddleware };
+const userDTO = Joi.object({
+  displayName: Joi.string().min(8).required(),
+  email: Joi.string().email(),
+  password: Joi.string().min(6).required(),
+  image: Joi.required(),
+});
+
+const userMiddleware = (req, res, next) => {
+  const { error } = userDTO.validate(req.body, { abortEarly: false });
+  if (error) return res.status(400).json({ message: error.details[0].message });
+  next();
+};
+
+module.exports = { loginMiddleware, userMiddleware };
