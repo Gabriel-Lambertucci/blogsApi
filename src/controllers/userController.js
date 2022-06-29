@@ -1,4 +1,5 @@
-const { userPost: userPostService } = require('../services/userService.js');
+const { userPost: userPostService,
+  userGet: userGetService } = require('../services/userService.js');
 
 const userPost = async (req, res) => {
   console.log(req.body);
@@ -7,4 +8,9 @@ const userPost = async (req, res) => {
   return res.status(409).json({ message: 'User already registered' });
 };
 
-module.exports = { userPost };
+const userGet = async (req, res) => {
+  const users = await userGetService();
+  return res.status(200).json(users);
+};
+
+module.exports = { userPost, userGet };

@@ -14,4 +14,11 @@ const userPost = async ({ displayName, email, password, image }) => {
 }
 };
 
-module.exports = { userPost };
+const userGet = async () => {
+  const users = User.findAll({
+    attributes: ['id', 'displayName', 'email', 'image'],
+  });
+  return users;
+};
+
+module.exports = { userPost, userGet };

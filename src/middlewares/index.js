@@ -1,4 +1,6 @@
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
+require('dotenv/config');
 
 const loginDTO = Joi.object({
   email: Joi.string().min(5).required(),
@@ -26,4 +28,16 @@ const userMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { loginMiddleware, userMiddleware };
+const tokenValidation = (req, res, next) => {
+  const token = req.headers.authorization;
+  console.log(token);
+  if (!token) return res.status(401).json({ message: 'Token not found' });
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: 'Expired or invalid token' });
+  }
+};
+
+module.exports = { loginMiddleware, userMiddleware, tokenValidation };
