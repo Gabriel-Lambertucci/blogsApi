@@ -21,4 +21,11 @@ const userGet = async () => {
   return users;
 };
 
-module.exports = { userPost, userGet };
+const userIdGet = async (id) => {
+  const user = User.findByPk(id, {
+    attributes: ['id', 'displayName', 'email', 'image'],
+  });
+  return user;
+};
+
+module.exports = { userPost, userGet, userIdGet };
