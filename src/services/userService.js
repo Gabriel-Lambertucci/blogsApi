@@ -5,7 +5,6 @@ const userPost = async ({ displayName, email, password, image }) => {
   const findEmail = await User.findOne({
     where: { email },
   });
-  console.log(findEmail);
   if (findEmail) return false;
   const user = await User.create({ 
     displayName, email, password, image });
