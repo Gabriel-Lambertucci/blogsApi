@@ -8,7 +8,9 @@ module.exports = {
         references: {
           model: 'BlogPosts',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        primaryKey: true,
       },
       categoryId: {
         allowNull: false,
@@ -16,11 +18,13 @@ module.exports = {
         references: {
           model: 'Categories',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        primaryKey: true,
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('PostsCategories');
+    await queryInterface.dropTable('PostCategories');
   }
 };

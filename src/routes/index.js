@@ -3,6 +3,7 @@ const { loginMiddleware, userMiddleware, tokenValidation } = require('../middlew
 const { loginPost } = require('../controllers/loginController.js');
 const { userPost, userGet, userIdGet } = require('../controllers/userController.js');
 const { categorieGet, categoriePost } = require('../controllers/categorieController.js');
+const { postGet, postPost } = require('../controllers/postController.js');
 
 const router = express.Router();
 
@@ -17,5 +18,10 @@ router.get('/user/:id', tokenValidation, userIdGet);
 // Rotas Categories
 router.post('/categories', tokenValidation, categoriePost);
 router.get('/categories', tokenValidation, categorieGet);
+
+// Rotas blogPost
+
+router.post('/post', tokenValidation, postPost);
+router.get('/post', tokenValidation, postGet);
 
 module.exports = router;
