@@ -3,12 +3,14 @@
 
   <h1><strong>👨‍💻 Sobre o Projeto </strong></h1><br />
 
-  API utilizando a arquitetura MSC (model-service-controller)!
+  API e um banco de dados para a produção de conteúdo para um blog! 
 
-  Sistema de gerenciamento de vendas em que é possível criar, visualizar, deletar e atualizar produtos e vendas.
+  Aplicação em `Node.js` usando o pacote `sequelize` para fazer um `CRUD` de posts.
 
-  Banco MySQL para a gestão de dados.
-  
-  API RESTful.
+  1. Endpoints que estão conectados ao seu banco de dados seguindo os princípios do REST;
+
+  2. Para fazer um post é necessário usuário e login, portanto foi trabalhada a **relação entre** `user` e `post`; 
+
+  3. Utilização de categorias para os posts, trabalhando, assim, a **relação de** `posts` para `categories` e de `categories` para `posts`.
 
   <br />
